@@ -20,10 +20,10 @@ public class MainActivity extends Activity  {
    
    @SuppressLint("SetJavaScriptEnabled")
    @Override
-   protected void onCreate(Bundle savedInstanceState) {      
+   protected void onCreate(Bundle savedInstanceState) {  
       super.onCreate(savedInstanceState);
       setContentView(R.layout.activity_main);
-      
+
       wv = (WebView) findViewById(R.id.webView);
       wv.setWebViewClient(new MyBrowser());
       wv.getSettings().setLoadsImagesAutomatically(true);
@@ -64,7 +64,8 @@ public class MainActivity extends Activity  {
        if (isNetworkAvailable(getBaseContext())) {
            wv.loadUrl("http://www.spielfilm.de"); 
        }else{
-           wv.loadUrl("http://www.google.de"); 
+    	   String summary = "<html><body>Sie sind nicht mit Internet verbunden!</body></html>";
+           wv.loadData(summary, "text/html", null);
        }
    }
    
